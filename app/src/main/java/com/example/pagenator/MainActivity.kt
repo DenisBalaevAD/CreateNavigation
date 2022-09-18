@@ -1,5 +1,6 @@
 package com.example.pagenator
 
+import android.annotation.SuppressLint
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -56,6 +57,12 @@ class MainActivity : AppCompatActivity() {
         nestedSV = findViewById(R.id.idNestedSV)
 
         // calling a method to load our api.
+
+        // setting layout manager to our recycler view.
+        userRV!!.layoutManager = LinearLayoutManager(this@MainActivity)
+        userRVAdapter = UserRVAdapter(userModalArrayList!!, this@MainActivity)
+        userRV!!.adapter = userRVAdapter
+
         getDataFromAPI(page, limit)
 
         // adding on scroll change listener method for our nested scroll view.
@@ -69,6 +76,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun getDataFromAPI(pages: Int, limit: Int) {
         if (pages > limit) {
             // checking if the page number is greater than limit.
@@ -77,7 +85,8 @@ class MainActivity : AppCompatActivity() {
 
             // hiding our progress bar.
             loadingPB!!.visibility = View.GONE
-            return
+            page--
+            //return
         }
         // creating a string variable for url .
         val url = "https://reqres.in/api/users?page=$page"
@@ -108,14 +117,13 @@ class MainActivity : AppCompatActivity() {
                                 )
                             )
 
-                            // passing array list to our adapter class.
+                           /* // passing array list to our adapter class.
                             userRVAdapter = UserRVAdapter(userModalArrayList!!, this@MainActivity)
 
-                            // setting layout manager to our recycler view.
-                            userRV!!.layoutManager = LinearLayoutManager(this@MainActivity)
-
                             // setting adapter to our recycler view.
-                            userRV!!.adapter = userRVAdapter
+                            userRV!!.adapter = userRVAdapter*/
+
+                            userRVAdapter!!.notifyDataSetChanged()
                         }
                     } catch (e: JSONException) {
                         e.printStackTrace()
