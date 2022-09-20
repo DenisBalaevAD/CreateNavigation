@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--in this we are displaying a nested scroll view-->
-<androidx.core.widget.NestedScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/idNestedSV"
@@ -34,4 +34,4 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>
