@@ -1,16 +1,14 @@
 package com.example.pagenator_retrafit
 
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.google.gson.annotations.Since
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 
 interface APIInterface {
-
     @GET("users")
-    fun getPage(@Query("page") page: Int):Call<MainPage>
+    fun getPage(@Query("page") page: Int): Call<MainPage>
 }
 
 data class MainPage(@SerializedName("data") val data:List<PaigeItem>)

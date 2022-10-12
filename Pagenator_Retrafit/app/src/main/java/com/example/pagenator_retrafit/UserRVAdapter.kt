@@ -33,7 +33,13 @@ class UserRVAdapter(
 
         // on below line we are loading our image
         // from url in our image view using picasso.
-        Picasso.get().load(userModal.avatar).into(holder.userIV)
+        Picasso.get()
+            .load(userModal.avatar)
+            .placeholder(R.drawable.ic_launcher_foreground)
+            .error(R.drawable.ic_launcher_foreground)
+            .fit().into(holder.userIV)
+
+        holder.itemView.setOnClickListener { Toast.makeText(context, holder.adapterPosition.toString(),Toast.LENGTH_LONG).show() }
     }
 
     override fun getItemCount(): Int {
