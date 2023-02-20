@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
     var indexInt=0;
 
     private fun parseJSON() {
-        //Запускаем цикл для получкния 13 ссылок на картинки.
         for(index in 0..20) {
             val api= Common.retrofitServices
             val call=api.getPage()

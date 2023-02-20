@@ -26,17 +26,6 @@ class RetrofitClient {
             .addInterceptor(httpLoggingInterceptor)
             .build()
 
-        /*val retrofitCacheInterceptor = RetrofitCacheInterceptor(context)
-
-        val cacheDir = Environment.getExternalStorageDirectory()
-        val cache = Cache(cacheDir, 20 * 1024 * 1024)
-
-        val okHttpClient: OkHttpClient = OkHttpClient()
-            .newBuilder()
-            .addInterceptor(retrofitCacheInterceptor)
-            .cache(cache)
-            .build()*/
-
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(okHttpClient)
